@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     <form method="get" class="form-search">
-<input type="text" name="q" value="<?= $q; ?>" placeholder="Cari data">
+<input type="text" name="q" value="<?= $q; ?>" placeholder="Cari judul Artikel">
 <input type="submit" value="Cari" class="btn btn-primary">
 </form>
         <?php if ($artikel) : foreach ($artikel as $row) : ?>
@@ -35,6 +35,6 @@
     </tbody>
 </table>
 
-
+<?= $pager->only(['q'])->links(); ?>
 
 <?= $this->include('template/admin_footer'); ?>
