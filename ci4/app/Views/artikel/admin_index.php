@@ -9,6 +9,10 @@
         </tr>
     </thead>
     <tbody>
+    <form method="get" class="form-search">
+<input type="text" name="q" value="<?= $q; ?>" placeholder="Cari data">
+<input type="submit" value="Cari" class="btn btn-primary">
+</form>
         <?php if ($artikel) : foreach ($artikel as $row) : ?>
                 <tr>
                     <td><?= $row['id']; ?></td>
@@ -31,6 +35,6 @@
     </tbody>
 </table>
 
-<?= $pager->links(); ?>
+
 
 <?= $this->include('template/admin_footer'); ?>
