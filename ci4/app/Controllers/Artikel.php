@@ -27,12 +27,18 @@ class Artikel extends BaseController
     }
     public function admin_index()
     {
-        $title = 'Daftar Artikel';
-        $model = new ArtikelModel();
-        $artikel = $model->findAll();
-        return view('artikel/admin_index', compact('artikel', 'title'));
+	      $title = 'Daftar Artikel';
+	      $q = $this->request->getVar('q') ?? '';
+	      $model = new ArtikelModel();
+	      $data = [
+	           'title' => $title,
+	           'q' => $q,
+	           'artikel' => $model->like('judul', $q)->paginate(2), # data dibatasi 2 record per halaman
+	           'pager' => $model->pager,
+	         ];
+	      return view('artikel/admin_index', $data);
     }
-
+    
     public function add()
     {
         // validasi data.
